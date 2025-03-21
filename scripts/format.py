@@ -26,20 +26,6 @@ def load_gitignore(root_dir: pathlib.Path) -> pathspec.PathSpec:
         with open(gitignore_file) as f:
             patterns = f.readlines()
 
-    # Add some common Python patterns if not already in .gitignore
-    default_patterns = [
-        "*.pyc",
-        "__pycache__/",
-        "*.pyo",
-        "*.pyd",
-        ".Python",
-        "env/",
-        "venv/",
-        ".env/",
-        ".venv/",
-    ]
-    patterns.extend(default_patterns)
-
     return pathspec.PathSpec.from_lines("gitwildmatch", patterns)
 
 
